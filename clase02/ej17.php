@@ -29,3 +29,4 @@ class Auto
 $auto = new Auto('Chevrolet CELTA', 'Gris', 100, new DateTime());
 
 echo '<br/> Auto color: ',$auto->_color;
+
