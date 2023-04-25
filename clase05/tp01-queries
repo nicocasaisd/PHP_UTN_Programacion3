@@ -1,0 +1,11 @@
+-- 1. Obtener los detalles completos de todos los usuarios, ordenados alfabéticamente.
+
+SELECT * FROM usuario ORDER BY nombre, apellido;
+
+--2. Obtener los detalles completos de todos los productos líquidos.
+
+SELECT * FROM producto WHERE tipo='liquido';
+
+-- 3. Obtener todas las compras en los cuales la cantidad esté entre 6 y 10 inclusive.
+
+-- 4. Obtener la cantidad total de todos los productos vendidos.
