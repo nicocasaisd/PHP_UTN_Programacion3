@@ -8,4 +8,48 @@ SELECT * FROM producto WHERE tipo='liquido';
 
 -- 3. Obtener todas las compras en los cuales la cantidad esté entre 6 y 10 inclusive.
 
+SELECT * FROM venta WHERE cantidad BETWEEN 6 AND 10;
+
 -- 4. Obtener la cantidad total de todos los productos vendidos.
+
+SELECT SUM(cantidad) FROM venta;
+
+-- 5. Mostrar los primeros 3 números de productos que se han enviado.
+
+SELECT * FROM venta LIMIT 3;
+
+-- 6. Mostrar los nombres del usuario y los nombres de los productos de cada venta.
+
+SELECT venta.id, producto.nombre, usuario.nombre, venta.cantidad
+FROM venta
+INNER JOIN producto ON venta.id_producto=producto.id
+INNER JOIN usuario ON venta.id_usuario=usuario.id;
+
+-- 7. Indicar el monto (cantidad * precio) por cada una de las ventas.
+
+SELECT venta.id, producto.nombre, usuario.nombre, venta.cantidad, venta.cantidad*producto.precio AS monto
+FROM venta
+INNER JOIN producto ON venta.id_producto=producto.id
+INNER JOIN usuario ON venta.id_usuario=usuario.id;
+
+-- 8. Obtener la cantidad total del producto 1003 vendido por el usuario 104.
+
+SELECT sum(cantidad) FROM venta WHERE id_producto=1003 AND id_usuario=104;
+
+-- 9. Obtener todos los números de los productos vendidos por algún usuario de Avellaneda
+
+SELECT venta.id_producto, usuario.localidad
+FROM venta
+LEFT JOIN usuario ON usuario.id = venta.id_usuario
+WHERE usuario.localidad = 'Avellaneda';
+
+--10.Obtener los datos completos de los usuarios cuyos nombres contengan la letra ‘u’.
+SELECT *
+FROM usuario
+WHERE nombre LIKE '%u%' OR apellido LIKE '%u%';
+
+--11. Traer las ventas entre junio del 2020 y febrero 2021.
+
+SELECT *
+FROM venta
+WHERE fecha_de_venta BETWEEN '2020-06-01' AND '2021-02-28';
