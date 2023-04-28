@@ -1,3 +1,9 @@
+/* 
+TP 01 - SQL
+CASAIS DASSIE, NICOLÁS
+ */
+
+
 -- 1. Obtener los detalles completos de todos los usuarios, ordenados alfabéticamente.
 
 SELECT * FROM usuario ORDER BY nombre, apellido;
@@ -53,3 +59,38 @@ WHERE nombre LIKE '%u%' OR apellido LIKE '%u%';
 SELECT *
 FROM venta
 WHERE fecha_de_venta BETWEEN '2020-06-01' AND '2021-02-28';
+
+-- 12. Obtener los usuarios registrados antes del 2021.
+
+SELECT *
+FROM usuario
+WHERE fecha_de_registro < '2021-01-01';
+
+-- 13.Agregar el producto llamado ‘Chocolate’, de tipo Sólido y con un precio de 25,35.
+
+INSERT INTO producto (nombre, tipo, precio)
+VALUES('Chocolate', 'solido', 25.35);
+
+-- 14.Insertar un nuevo usuario
+
+INSERT INTO usuario
+VALUES('nicolas', 'casais', '2345', 'nicolas@casais.org', '2023-04-28', 'Quilmes');
+
+-- 15.Cambiar los precios de los productos de tipo sólido a 66,60.
+
+UPDATE producto
+SET(precio=66.60)
+WHERE tipo='liquido';
+
+-- 16.Cambiar el stock a 0 de todos los productos cuyas cantidades de stock sean menores
+--a 20 inclusive.
+
+UPDATE producto
+SET(stock=0)
+WHERE stock <= 20;
+
+-- 17.Eliminar el producto número 1010.
+
+DELETE FROM producto
+WHERE id=1010;
+
