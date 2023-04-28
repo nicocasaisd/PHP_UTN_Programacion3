@@ -24,3 +24,12 @@ function mi_strrev($string)
 echo '<br/>', 'Mi funcion: ';
 echo '<br/>';
 echo mi_strrev('Mi funcion');
+
+echo '<h1> Mini prueba array</h1>';
+$arr[] = 1;
+$arr[] = 2;
+$arr[] = 3;
+
+foreach($arr as $elemento){
+    echo $elemento, '<br>';
+}

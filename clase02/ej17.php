@@ -11,11 +11,11 @@ _fecha (DateTime)
 class Auto
 {
     public string $_color;
-    private float $_precio;
+    private ?float $_precio;
     private string $_marca;
-    private DateTime $_fecha;
+    private ?DateTime $_fecha;
 
-    public function __construct(string $_marca, string $_color, float $_precio, DateTime $_fecha)
+    public function __construct(string $_marca, string $_color, ?float $_precio = null, ?DateTime $_fecha = null)
     {
         echo 'En el constructor de auto';
         $this->_color = $_color;
@@ -24,9 +24,20 @@ class Auto
         $this->_fecha = $_fecha;
     }
 
+    public function __get($atributo) 
+    {
+        if (property_exists($this, $atributo)) 
+        {
+            return $this->$atributo;
+        }
+    }
 }
 
-$auto = new Auto('Chevrolet CELTA', 'Gris', 100, new DateTime());
+$auto2 = new Auto('Chevrolet CELTA', 'Gris', 100, new DateTime());
+$auto = new Auto('Chevrolet ONIX', 'Gris');
 
-echo '<br/> Auto color: ',$auto->_color;
-
+echo '<br/> Auto color: ', $auto->_color;
+echo '<br/> Auto2 marca: ', $auto2->__get('_marca');
+echo '<br>tipo de DateTime: ', gettype($auto2->_fecha);
+echo '<br>tipo de precio: ', gettype($auto2->_precio);
+echo '<br>tipo de precio: ', gettype($auto->_precio);
