@@ -1,11 +1,7 @@
 <?php
 /*  
 Aplicación Nº 17 (Auto)
-Realizar una clase llamada “Auto” que posea los siguientes atributos
-privados: _color (String)
-_precio (Double)
-_marca (String).
-_fecha (DateTime)
+CASAIS DASSIE, NICOLAS
 */
 
 //      *** CLASE ***
@@ -67,7 +63,7 @@ class Auto
 }
 
 //      *** CONSOLA ***
-
+/* 
 $date = new DateTime();
 echo 'Fecha: ' . $date->format('d/m/y') . '<br>';
 $auto1 = new Auto('CELTA', 'Gris', 100, $date);
@@ -88,3 +84,4 @@ echo '<br/> Auto precio con impuesto: ', $auto1->_precio;
 echo '<br/> Equals: ';
 echo $auto1->Equals($auto2);
  echo '<br/> Add: ' . Auto::Add($auto1, $auto2);
+ */
