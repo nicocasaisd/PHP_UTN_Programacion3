@@ -29,3 +29,9 @@ if (!empty($_POST)) {
         echo "La edad es numerica"  . PHP_EOL;
     }
 }
+
+// RECIBIR ARCHIVO POR POST
+if(!empty($_FILES))
+{
+    move_uploaded_file($_FILES['perfil']['tmp_name'], './Usuario/Fotos/perfil'. $usuario->id.'.jpg');
+}
