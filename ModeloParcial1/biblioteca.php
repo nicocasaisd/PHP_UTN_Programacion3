@@ -10,7 +10,7 @@ class Pizza
     public float $precio;
     public int $cantidad;
 
-    public function __construct($sabor, $tipo, $precio, $cantidad)
+    public function __construct($sabor = "", $tipo = "", $precio = 0, $cantidad = 0)
     {
         $this->id = rand(1, 10000);
         $this->sabor = $sabor;
@@ -48,11 +48,36 @@ class Pizza
         foreach ($array as $item) {
             if ($item->sabor == $sabor && $item->tipo == $tipo) {
                 //var_dump($item);
-                return "Si hay". PHP_EOL;
+                return $item;
             }
         }
 
-        return "No existe el tipo o sabor". PHP_EOL;
+        return "";
+    }
+
+    static function ConsultarStockPizza($array, $sabor, $tipo, $cantidad)
+    {
+        $pizza = self::GetPizza($array, $sabor, $tipo);
+        if ($pizza->cantidad >= $cantidad) {
+            //var_dump($item);
+            return true;
+        }
+
+
+        return false;
+    }
+}
+
+class Venta
+{
+    public int $nro_de_pedido;
+    public Pizza $pizza;
+    public DateTime $fecha;
+
+
+    public function __construct()
+    {
+        $this->nro_de_pedido = rand(10000, 20000);
     }
 }
 

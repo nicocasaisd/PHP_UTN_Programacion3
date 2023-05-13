@@ -11,7 +11,7 @@ if (
     ValidarEmpty('sabor', $_GET)
     && ValidarEmpty('tipo', $_GET)
 ) {
-    echo Pizza::GetPizza($array, $_GET['sabor'], $_GET['tipo']);
+    var_dump(Pizza::GetPizza($array, $_GET['sabor'], $_GET['tipo']));
 }
 else{
     echo 'Request invalida. No existen las keys' . PHP_EOL;
