@@ -8,6 +8,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 case 'PizzaConsultar':
                     include_once './PizzaConsultar.php';
                     break;
+                case 'ConsultasVentas':
+                    include_once './ConsultasVentas.php';
+                    break;
                 default:
                     echo 'Bad request';
                     break;
@@ -30,7 +33,23 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
         }
         break;
+    case 'PUT':
+        echo "Recibi PUT" . PHP_EOL;
+        $_PUT = file_get_contents('php://input');
+        $_PUT = json_decode($_PUT, true);
+
+       
+        switch ($_PUT['request']) {
+            case 'ModificarVenta':
+                include_once './ModificarVenta.php';
+                break;
+            default:
+                echo 'Bad request';
+                break;
+        }
+        break;
+
     default:
-        echo 'Bad request';
+        echo 'Metodo de REQUEST no definido';
         break;
 }

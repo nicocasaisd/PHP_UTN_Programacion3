@@ -70,12 +70,14 @@ class Pizza
 
     static function ConsultarStockPizza($array, $sabor, $tipo, $cantidad)
     {
-        $pizza = self::GetPizza($array, $sabor, $tipo);
-        if ($pizza->cantidad >= $cantidad) {
-            //var_dump($item);
-            return true;
-        }
+        if ($pizza = self::GetPizza($array, $sabor, $tipo)) {
 
+
+            if ($pizza->cantidad >= $cantidad) {
+                //var_dump($item);
+                return true;
+            }
+        }
 
         return false;
     }
@@ -85,15 +87,17 @@ class Venta
 {
     public int $nro_de_pedido;
     public DateTime $fecha;
+    public string $mail;
     public int $id_autoincremental;
     public string $sabor;
     public string $tipo;
     public int $cantidad;
 
 
-    public function __construct(DateTime $fecha, int $id_autoincremental, $sabor, $tipo, $cantidad)
+    public function __construct(DateTime $fecha, string $mail,  int $id_autoincremental, $sabor, $tipo, $cantidad)
     {
         $this->nro_de_pedido = rand(10000, 20000);
+        $this->mail = $mail;
         $this->fecha = $fecha;
         $this->id_autoincremental = $id_autoincremental;
         $this->sabor = $sabor;
@@ -110,6 +114,7 @@ class Venta
             move_uploaded_file($_FILES['imagen_venta']['tmp_name'], './ImagenesDeLaVenta/' . $nombreImagen . '.jpg');
         }
     }
+    
 }
 
 

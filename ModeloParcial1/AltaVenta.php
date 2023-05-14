@@ -22,7 +22,7 @@ if (
 
     if (Pizza::ConsultarStockPizza($array_pizza, $_POST['sabor'], $_POST['tipo'], $_POST['cantidad'])) {
         $pizza = Pizza::GetPizza($array_pizza,  $_POST['sabor'], $_POST['tipo']);
-        $nueva_venta = new Venta(new DateTime(), $pizza->id, $pizza->sabor, $pizza->tipo, $_POST['cantidad']);
+        $nueva_venta = new Venta(new DateTime(), $_POST['mail'], $pizza->id, $pizza->sabor, $pizza->tipo, $_POST['cantidad']);
         array_push($array_venta, $nueva_venta);
         // Resto stock
         $array_pizza = Pizza::RemoveStockPizza($array_pizza, $pizza, $_POST['cantidad']);
