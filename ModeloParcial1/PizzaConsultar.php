@@ -5,7 +5,7 @@ retornar “Si Hay”. De lo contrario informar si no existe el tipo o el sabor.
 */
 include_once './biblioteca.php';
 
-$array = ReadJson();
+$array = ReadJson('./pizza.json');
 
 if (
     ValidarEmpty('sabor', $_GET)

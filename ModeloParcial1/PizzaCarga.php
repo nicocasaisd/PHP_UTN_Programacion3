@@ -8,7 +8,7 @@ identificador(emulado) .Sí el sabor y tipo ya existen , se actualiza el precio 
 
 include_once './biblioteca.php';
 
-$array = ReadJson();
+$array = ReadJson('./pizza.json');
 
 //var_dump($array[0]);
 //echo $array[0]->id;
@@ -26,7 +26,7 @@ if (
 
 //var_dump($array);
 
-WriteJson($array);
+WriteJson($array, './pizza.json');
 
 
 

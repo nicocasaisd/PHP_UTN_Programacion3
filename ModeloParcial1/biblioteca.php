@@ -43,6 +43,19 @@ class Pizza
         return $array;
     }
 
+    static function RemoveStockPizza($array, $pizza, $cantidad)
+    {
+        foreach ($array as $item) {
+            if ($item->sabor == $pizza->sabor && $item->tipo == $pizza->tipo) {
+                $item->cantidad -= $cantidad;
+                echo 'Se descontó del stock' . PHP_EOL;
+                return $array;
+            }
+        }
+
+        return $array;
+    }
+
     static function GetPizza($array, $sabor, $tipo)
     {
         foreach ($array as $item) {
@@ -71,31 +84,49 @@ class Pizza
 class Venta
 {
     public int $nro_de_pedido;
-    public Pizza $pizza;
     public DateTime $fecha;
+    public int $id_autoincremental;
+    public string $sabor;
+    public string $tipo;
+    public int $cantidad;
 
 
-    public function __construct()
+    public function __construct(DateTime $fecha, int $id_autoincremental, $sabor, $tipo, $cantidad)
     {
         $this->nro_de_pedido = rand(10000, 20000);
+        $this->fecha = $fecha;
+        $this->id_autoincremental = $id_autoincremental;
+        $this->sabor = $sabor;
+        $this->tipo = $tipo;
+        $this->cantidad = $cantidad;
+    }
+
+    public static function GuardarImagen($nombreImagen)
+    {
+        if (!empty($_FILES)) {
+            if (!is_dir('./ImagenesDeLaVenta')) {
+                mkdir('./ImagenesDeLaVenta', 0777, true);
+            }
+            move_uploaded_file($_FILES['imagen_venta']['tmp_name'], './ImagenesDeLaVenta/' . $nombreImagen . '.jpg');
+        }
     }
 }
 
 
 
-function ReadJson()
+function ReadJson($path)
 {
     $array = [];
-    if (file_exists('./pizza.json')) {
-        $array = json_decode(file_get_contents('./pizza.json'));
+    if (file_exists($path)) {
+        $array = json_decode(file_get_contents($path));
     }
 
     return $array;
 }
 
-function WriteJson($array)
+function WriteJson($array, $path)
 {
-    $archivo = fopen("pizza.json", "w");
+    $archivo = fopen($path, 'w');
     if (fputs($archivo, json_encode($array) . PHP_EOL) > 0) {
         echo "Se escribio el archivo json." . PHP_EOL;
     }
