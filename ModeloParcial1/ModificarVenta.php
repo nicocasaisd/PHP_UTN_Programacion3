@@ -19,18 +19,7 @@ if (
     && ValidarEmpty('mail', $_PUT)
 ) {
 
-    foreach($array_venta as $venta)
-    {
-        if($_PUT['nro_de_pedido'] == $venta->nro_de_pedido)
-        {
-            $venta->mail = $_PUT['mail'];
-            $venta->sabor = $_PUT['sabor'];
-            $venta->tipo = $_PUT['tipo'];
-            $venta->cantidad = $_PUT['cantidad'];
-        }
-    }
-
-
+    $array_venta = Venta::ModificarVenta($array_venta, $_PUT);
 }
 
 WriteJson($array_venta, './venta.json');
