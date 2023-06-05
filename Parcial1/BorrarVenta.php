@@ -7,7 +7,7 @@ la carpeta /BACKUPVENTAS
 
 
 include_once './biblioteca.php';
-include_once './Pizza.php';
+include_once './Hamburguesa.php';
 include_once './Venta.php';
 
 $array_venta = ReadJson('./venta.json');
@@ -17,7 +17,6 @@ if (
 ) {
 
     $array_venta = Venta::BorrarVenta($array_venta, $_DELETE['nro_de_pedido']);
-    // Venta::MoverImagen()
 }
 
 

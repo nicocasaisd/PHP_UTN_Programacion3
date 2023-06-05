@@ -1,15 +1,8 @@
 <?php
 
-/* 
-4- (3 pts.)ConsultasVentas.php: necesito saber :
-a- la cantidad de pizzas vendidas
-b- el listado de ventas entre dos fechas ordenado por sabor.
-c- el listado de ventas de un usuario ingresado
-d- el listado de ventas de un sabor ingresado
-*/
 
 include_once './biblioteca.php';
-include_once './Pizza.php';
+include_once './Hamburguesa.php';
 include_once './Venta.php';
 
 $array_venta = ReadJson('./venta.json');
@@ -19,9 +12,9 @@ $array_venta = ReadJson('./venta.json');
     a- la cantidad de pizzas vendidas
 */
 
-$totalPizzasVendidas = Venta::ConsultarTotalVendidas($array_venta);
+$totalVendidas = Venta::ConsultarTotalVendidas($array_venta, $_GET['fecha_inicio']);
 
-echo "*** Total de Pizzas vendidas: " . $totalPizzasVendidas . PHP_EOL;
+echo "*** Total de Pizzas vendidas: " . $totalVendidas . PHP_EOL;
 echo PHP_EOL;
 
 /* 
@@ -66,12 +59,25 @@ if (ValidarEmpty('mail', $_GET)) {
 d- el listado de ventas de un sabor ingresado
 */
 
-if (ValidarEmpty('sabor', $_GET)) {
-    echo "*** Listado de ventas del sabor " . $_GET['sabor'] .  ": " . PHP_EOL;
+if (ValidarEmpty('tipo', $_GET)) {
+    echo "*** Listado de ventas del tipo " . $_GET['tipo'] .  ": " . PHP_EOL;
     foreach ($array_venta as $venta) {
-        if ($_GET['sabor'] == $venta->sabor) {
+        if ($_GET['tipo'] == $venta->tipo) {
             Venta::MostrarVenta($venta);
         }
     }
     echo PHP_EOL;
 }
+
+/* 
+e- Listado de ventas de aderezo “Ketchup”
+*/
+
+
+echo "*** Listado de ventas del aderezo KETCHUP : " . PHP_EOL;
+foreach ($array_venta as $venta) {
+    if ('Ketchup' == $venta->aderezo) {
+        Venta::MostrarVenta($venta);
+    }
+}
+echo PHP_EOL;
