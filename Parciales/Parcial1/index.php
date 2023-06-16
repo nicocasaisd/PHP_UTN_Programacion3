@@ -6,10 +6,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         if (!empty($_GET) && isset($_GET['request'])) {
             switch ($_GET['request']) {
                 case 'HamburguesaConsultar':
-                    include_once './HamburguesaConsultar.php';
+                    include_once './controllers/HamburguesaConsultar.php';
                     break;
                 case 'ConsultasVentas':
-                    include_once './ConsultasVentas.php';
+                    include_once './controllers/ConsultasVentas.php';
                     break;
                 default:
                     echo 'Bad request';
@@ -22,16 +22,16 @@ switch ($_SERVER['REQUEST_METHOD']) {
         if (!empty($_POST) && isset($_POST['request'])) {
             switch ($_POST['request']) {
                 case 'HamburguesaCarga':
-                    include_once './HamburguesaCarga.php';
+                    include_once './controllers/HamburguesaCarga.php';
                     break;
                 case 'AltaVenta':
-                    include_once './AltaVenta.php';
+                    include_once './controllers/AltaVenta.php';
                     break;
                 case 'HamburguesaConsultar':
-                    include_once './HamburguesaConsultar.php';
+                    include_once './controllers/HamburguesaConsultar.php';
                     break;
                 case 'HamburguesaDevolver':
-                    include_once './DevolverHamburguesa.php';
+                    include_once './controllers/DevolverHamburguesa.php';
                     break;
                 default:
                     echo 'Bad request';
@@ -47,7 +47,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         switch ($_PUT['request']) {
             case 'ModificarVenta':
-                include_once './ModificarVenta.php';
+                include_once './controllers/ModificarVenta.php';
                 break;
             default:
                 echo 'Bad request';
@@ -60,7 +60,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $_DELETE = json_decode($_DELETE, true);
         switch ($_DELETE['request']) {
             case 'BorrarVenta':
-                include_once './BorrarVenta.php';
+                include_once './controllers/BorrarVenta.php';
                 break;
             default:
                 echo 'Bad request';

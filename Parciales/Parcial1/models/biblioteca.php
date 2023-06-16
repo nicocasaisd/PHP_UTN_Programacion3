@@ -14,7 +14,7 @@ function ReadJson($path)
 function WriteJson($array, $path)
 {
     $archivo = fopen($path, 'w');
-    if (fputs($archivo, json_encode($array) . PHP_EOL) > 0) {
+    if (fputs($archivo, json_encode($array, JSON_PRETTY_PRINT) . PHP_EOL) > 0) {
         echo "Se escribio el archivo json." . PHP_EOL;
     }
 }

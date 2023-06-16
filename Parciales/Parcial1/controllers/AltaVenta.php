@@ -1,9 +1,9 @@
 <?php
 
 
-include_once './biblioteca.php';
-include_once './Hamburguesa.php';
-include_once './Venta.php';
+include_once './models/biblioteca.php';
+include_once './models/Hamburguesa.php';
+include_once './models/Venta.php';
 
 $array_hamburguesa = ReadJson('./hamburguesa.json');
 $array_venta = ReadJson('./venta.json');

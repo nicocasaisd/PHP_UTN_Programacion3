@@ -1,10 +1,10 @@
 <?php
 
 
-include_once './biblioteca.php';
-include_once './Hamburguesa.php';
-include_once './Venta.php';
-include_once './Devolucion.php';
+include_once '../models/biblioteca.php';
+include_once '../models/Hamburguesa.php';
+include_once '../models/Venta.php';
+include_once './models/Devolucion.php';
 
 $array_devoluciones = ReadJson('./devoluciones.json');
 $array_ventas = ReadJson('./venta.json');

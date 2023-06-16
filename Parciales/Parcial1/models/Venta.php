@@ -37,6 +37,7 @@ class Venta
             }
             move_uploaded_file($_FILES['imagen_venta']['tmp_name'], './ImagenesDeLaVenta/' . $nombreImagen . '.jpg');
         }
+        else{ echo "No se envió ningún archivo." . PHP_EOL;}
     }
 
     public static function MoverImagen($ruta, $nueva_ruta)
@@ -93,14 +94,11 @@ class Venta
 
     public static function ConsultarTotalVendidas($array_venta, $fecha_ingresada)
     {
+        // var_dump($fecha_ingresada);
         $totalVendidas = 0;
         foreach ($array_venta as $venta) {
             $fecha = new DateTime($venta->fecha->date);
-            if ($fecha == $fecha_ingresada) {
-                $totalVendidas += $venta->cantidad;
-            }
-            else
-            {
+            if ($fecha->format('d-m-y') == $fecha_ingresada) {
                 $totalVendidas += $venta->cantidad;
             }
         }

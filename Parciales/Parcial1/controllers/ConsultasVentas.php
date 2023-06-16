@@ -1,20 +1,21 @@
 <?php
 
 
-include_once './biblioteca.php';
-include_once './Hamburguesa.php';
-include_once './Venta.php';
+include_once './models/biblioteca.php';
+include_once './models/Hamburguesa.php';
+include_once './models/Venta.php';
 
 $array_venta = ReadJson('./venta.json');
 
 
 /* 
-    a- la cantidad de pizzas vendidas
+    a- la cantidad de Hamburguesas vendidas
 */
+if()
 
 $totalVendidas = Venta::ConsultarTotalVendidas($array_venta, $_GET['fecha_inicio']);
 
-echo "*** Total de Pizzas vendidas: " . $totalVendidas . PHP_EOL;
+echo "*** Total de Hamburguesas vendidas: " . $totalVendidas . PHP_EOL;
 echo PHP_EOL;
 
 /* 
@@ -34,7 +35,7 @@ if (
     }
 
 
-    echo "*** Listado de Ventas entre " . $fecha_inicio->format('d-m-y') . ' y ' .  $fecha_final->format('d-m-y') . " ordenadas por sabor:" . PHP_EOL;
+    echo "*** Listado de Ventas entre " . $fecha_inicio->format('d-m-y') . ' y ' .  $fecha_final->format('d-m-y') . " ordenadas por nombre:" . PHP_EOL;
     foreach ($listaVentasEnRango as $venta) {
         Venta::MostrarVenta($venta);
     }
