@@ -60,8 +60,8 @@
         },
         "mail": "nico@gmail.com",
         "id_autoincremental": 6479,
-        "nombre": "Montana",
-        "tipo": "simple",
+        "nombre": "Texas",
+        "tipo": "doble",
         "cantidad": 1
     },
     {
@@ -73,8 +73,8 @@
         },
         "mail": "nico@gmail.com",
         "id_autoincremental": 6479,
-        "nombre": "Montana",
-        "tipo": "simple",
+        "nombre": "Chicago",
+        "tipo": "doble",
         "cantidad": 1
     }
 ]
