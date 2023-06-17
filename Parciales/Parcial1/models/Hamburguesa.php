@@ -84,6 +84,19 @@ class Hamburguesa
         return false;
     }
 
+    static function GetPrecio($id)
+    {
+        $array = ReadJson('./hamburguesa.json');
+
+        foreach ($array as $hamburguesa) {
+            if ($hamburguesa->id == $id) {
+                return $hamburguesa->precio;
+            }
+        }
+
+        return false;
+    }
+
     public static function GuardarImagen($nombreImagen)
     {
         if (!empty($_FILES)) {

@@ -4,6 +4,7 @@
 include_once './models/biblioteca.php';
 include_once './models/Hamburguesa.php';
 include_once './models/Venta.php';
+include_once './models/Cupon.php';
 
 $array_hamburguesa = ReadJson('./hamburguesa.json');
 $array_venta = ReadJson('./venta.json');
@@ -21,8 +22,15 @@ if (
 
     if (Hamburguesa::ConsultarStock($array_hamburguesa, $_POST['nombre'], $_POST['tipo'], $_POST['cantidad'])) {
         $hamburguesa = Hamburguesa::Get($array_hamburguesa,  $_POST['nombre'], $_POST['tipo']);
-        $nueva_venta = new Venta(new DateTime(), $_POST['mail'], $hamburguesa->id, $hamburguesa->nombre, $hamburguesa->tipo, $hamburguesa->aderezo, $_POST['cantidad']);
+        // $nueva_venta = new Venta(new DateTime(), $_POST['mail'], $hamburguesa->id, $hamburguesa->nombre, $hamburguesa->tipo, $hamburguesa->aderezo, $_POST['cantidad']);
         
+        // Si hay, agrego cupon de descuento
+        if(ValidarEmpty('id_cupon', $_POST)){
+            $nueva_venta = new Venta(new DateTime(), $_POST['mail'], $hamburguesa->id, $hamburguesa->nombre, $hamburguesa->tipo, $hamburguesa->aderezo, $_POST['cantidad'], $_POST['id_cupon']);
+        }
+        else{
+            $nueva_venta = new Venta(new DateTime(), $_POST['mail'], $hamburguesa->id, $hamburguesa->nombre, $hamburguesa->tipo, $hamburguesa->aderezo, $_POST['cantidad']);
+        }
         
         array_push($array_venta, $nueva_venta);
         // Resto stock

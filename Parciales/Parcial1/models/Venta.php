@@ -12,9 +12,11 @@ class Venta
     public string $tipo;
     public string $aderezo;
     public int $cantidad;
+    public float $id_cupon;
+    public float $importe_final;
 
 
-    public function __construct(DateTime $fecha, string $mail,  int $id_autoincremental, $nombre, $tipo, $aderezo, $cantidad)
+    public function __construct(DateTime $fecha, string $mail,  int $id_autoincremental, $nombre, $tipo, $aderezo, $cantidad, $id_cupon=-1)
     {
         $this->nro_de_pedido = rand(10000, 20000);
         $this->mail = $mail;
@@ -24,11 +26,24 @@ class Venta
         $this->tipo = $tipo;
         $this->aderezo = $aderezo;
         $this->cantidad = $cantidad;
+        $this->id_cupon = $id_cupon;
+        $this->importe_final = $this->CalcularImporteFinal();
+    }
+
+    private function CalcularImporteFinal()
+    {
+        $precio_unitario = Hamburguesa::GetPrecio($this->id_autoincremental);
+        $importe = $this->cantidad * $precio_unitario;
+        if($this->id_cupon > 0){
+            $importe = Cupon::AplicarDescuento($this->id_cupon, $importe);
+        }
+
+        return $importe;
     }
 
     public static function MostrarVenta($objeto)
     {
-        echo $objeto->nro_de_pedido . ', ' . $objeto->fecha->date . ', ' . $objeto->mail . ', ' . $objeto->nombre . ', ' . $objeto->tipo . ', ' . $objeto->aderezo . ', '. $objeto->cantidad . PHP_EOL;
+        echo $objeto->nro_de_pedido . ', ' . $objeto->fecha->date . ', ' . $objeto->mail . ', ' . $objeto->nombre . ', ' . $objeto->tipo . ', ' . $objeto->aderezo . ', '. $objeto->cantidad . ', '. $objeto->id_cupon. PHP_EOL;
     }
 
     public static function GuardarImagen($nombreImagen)

@@ -1,8 +1,8 @@
 [
     {
-        "nro_de_pedido": 15392,
+        "nro_de_pedido": 17132,
         "fecha": {
-            "date": "2023-06-15 22:55:53.757373",
+            "date": "2023-06-17 21:26:33.069550",
             "timezone_type": 3,
             "timezone": "Europe\/Berlin"
         },
@@ -11,40 +11,13 @@
         "nombre": "Montana",
         "tipo": "simple",
         "aderezo": "Mostaza",
-        "cantidad": 1
+        "cantidad": 1,
+        "id_cupon": 0
     },
     {
-        "nro_de_pedido": 17621,
+        "nro_de_pedido": 12731,
         "fecha": {
-            "date": "2023-06-15 22:57:19.624429",
-            "timezone_type": 3,
-            "timezone": "Europe\/Berlin"
-        },
-        "mail": "nico@gmail.com",
-        "id_autoincremental": 6479,
-        "nombre": "Montana",
-        "tipo": "simple",
-        "aderezo": "Ketchup",
-        "cantidad": 1
-    },
-    {
-        "nro_de_pedido": 19077,
-        "fecha": {
-            "date": "2023-06-16 22:57:50.206284",
-            "timezone_type": 3,
-            "timezone": "Europe\/Berlin"
-        },
-        "mail": "nico@gmail.com",
-        "id_autoincremental": 6479,
-        "nombre": "Montana",
-        "tipo": "simple",
-        "aderezo": "Ketchup",
-        "cantidad": 1
-    },
-    {
-        "nro_de_pedido": 12409,
-        "fecha": {
-            "date": "2023-06-16 22:58:23.685714",
+            "date": "2023-06-17 21:40:02.423411",
             "timezone_type": 3,
             "timezone": "Europe\/Berlin"
         },
@@ -53,40 +26,14 @@
         "nombre": "Montana",
         "tipo": "simple",
         "aderezo": "Mostaza",
-        "cantidad": 1
+        "cantidad": 1,
+        "id_cupon": -1,
+        "importe_final": 160
     },
     {
-        "nro_de_pedido": 16727,
+        "nro_de_pedido": 13923,
         "fecha": {
-            "date": "2023-06-16 22:59:29.364707",
-            "timezone_type": 3,
-            "timezone": "Europe\/Berlin"
-        },
-        "mail": "nico@gmail.com",
-        "id_autoincremental": 6479,
-        "nombre": "Texas",
-        "tipo": "doble",
-        "aderezo": "Mostaza",
-        "cantidad": 1
-    },
-    {
-        "nro_de_pedido": 17308,
-        "fecha": {
-            "date": "2023-06-17 17:04:41.104330",
-            "timezone_type": 3,
-            "timezone": "Europe\/Berlin"
-        },
-        "mail": "nico@gmail.com",
-        "id_autoincremental": 6479,
-        "nombre": "Ohio",
-        "tipo": "doble",
-        "aderezo": "Mayonesa",
-        "cantidad": 4
-    },
-    {
-        "nro_de_pedido": 10593,
-        "fecha": {
-            "date": "2023-06-17 17:14:12.453761",
+            "date": "2023-06-17 21:40:19.904095",
             "timezone_type": 3,
             "timezone": "Europe\/Berlin"
         },
@@ -95,6 +42,232 @@
         "nombre": "Montana",
         "tipo": "simple",
         "aderezo": "Mostaza",
-        "cantidad": 3
+        "cantidad": 3,
+        "id_cupon": -1,
+        "importe_final": 480
+    },
+    {
+        "nro_de_pedido": 17233,
+        "fecha": {
+            "date": "2023-06-17 21:42:13.588939",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": -1,
+        "importe_final": 480
+    },
+    {
+        "nro_de_pedido": 17234,
+        "fecha": {
+            "date": "2023-06-17 21:42:34.540496",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 480
+    },
+    {
+        "nro_de_pedido": 10571,
+        "fecha": {
+            "date": "2023-06-17 21:43:01.805613",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 480
+    },
+    {
+        "nro_de_pedido": 17113,
+        "fecha": {
+            "date": "2023-06-17 21:43:44.713658",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 480
+    },
+    {
+        "nro_de_pedido": 15082,
+        "fecha": {
+            "date": "2023-06-17 21:44:11.083467",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 480
+    },
+    {
+        "nro_de_pedido": 16574,
+        "fecha": {
+            "date": "2023-06-17 21:46:57.122768",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 48
+    },
+    {
+        "nro_de_pedido": 10484,
+        "fecha": {
+            "date": "2023-06-17 21:48:17.955046",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 432
+    },
+    {
+        "nro_de_pedido": 13761,
+        "fecha": {
+            "date": "2023-06-17 21:54:01.459239",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 480
+    },
+    {
+        "nro_de_pedido": 12850,
+        "fecha": {
+            "date": "2023-06-17 21:55:17.140294",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 432
+    },
+    {
+        "nro_de_pedido": 15012,
+        "fecha": {
+            "date": "2023-06-17 21:56:52.587379",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 432
+    },
+    {
+        "nro_de_pedido": 19359,
+        "fecha": {
+            "date": "2023-06-17 21:57:00.654064",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 432
+    },
+    {
+        "nro_de_pedido": 10116,
+        "fecha": {
+            "date": "2023-06-17 21:57:15.618896",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 432
+    },
+    {
+        "nro_de_pedido": 15767,
+        "fecha": {
+            "date": "2023-06-17 21:57:53.182615",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 480
+    },
+    {
+        "nro_de_pedido": 11523,
+        "fecha": {
+            "date": "2023-06-17 21:58:01.771808",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 480
     }
 ]
