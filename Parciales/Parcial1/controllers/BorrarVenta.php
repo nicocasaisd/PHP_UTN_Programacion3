@@ -6,9 +6,9 @@ la carpeta /BACKUPVENTAS
 */
 
 
-include_once '../models/biblioteca.php';
-include_once '../models/Hamburguesa.php';
-include_once '../models/Venta.php';
+include_once './models/biblioteca.php';
+include_once './models/Hamburguesa.php';
+include_once './models/Venta.php';
 
 $array_venta = ReadJson('./venta.json');
 

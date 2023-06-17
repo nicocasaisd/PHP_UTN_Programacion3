@@ -21,7 +21,7 @@ if (
 
     if (Hamburguesa::ConsultarStock($array_hamburguesa, $_POST['nombre'], $_POST['tipo'], $_POST['cantidad'])) {
         $hamburguesa = Hamburguesa::Get($array_hamburguesa,  $_POST['nombre'], $_POST['tipo']);
-        $nueva_venta = new Venta(new DateTime(), $_POST['mail'], $hamburguesa->id, $hamburguesa->nombre, $hamburguesa->tipo, $_POST['cantidad']);
+        $nueva_venta = new Venta(new DateTime(), $_POST['mail'], $hamburguesa->id, $hamburguesa->nombre, $hamburguesa->tipo, $hamburguesa->aderezo, $_POST['cantidad']);
         
         
         array_push($array_venta, $nueva_venta);

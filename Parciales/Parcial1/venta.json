@@ -10,6 +10,7 @@
         "id_autoincremental": 6479,
         "nombre": "Montana",
         "tipo": "simple",
+        "aderezo": "Mostaza",
         "cantidad": 1
     },
     {
@@ -23,6 +24,7 @@
         "id_autoincremental": 6479,
         "nombre": "Montana",
         "tipo": "simple",
+        "aderezo": "Ketchup",
         "cantidad": 1
     },
     {
@@ -36,6 +38,7 @@
         "id_autoincremental": 6479,
         "nombre": "Montana",
         "tipo": "simple",
+        "aderezo": "Ketchup",
         "cantidad": 1
     },
     {
@@ -49,6 +52,7 @@
         "id_autoincremental": 6479,
         "nombre": "Montana",
         "tipo": "simple",
+        "aderezo": "Mostaza",
         "cantidad": 1
     },
     {
@@ -62,19 +66,35 @@
         "id_autoincremental": 6479,
         "nombre": "Texas",
         "tipo": "doble",
+        "aderezo": "Mostaza",
         "cantidad": 1
     },
     {
-        "nro_de_pedido": 14521,
+        "nro_de_pedido": 17308,
         "fecha": {
-            "date": "2023-06-16 22:59:54.705711",
+            "date": "2023-06-17 17:04:41.104330",
             "timezone_type": 3,
             "timezone": "Europe\/Berlin"
         },
         "mail": "nico@gmail.com",
         "id_autoincremental": 6479,
-        "nombre": "Chicago",
+        "nombre": "Ohio",
         "tipo": "doble",
-        "cantidad": 1
+        "aderezo": "Mayonesa",
+        "cantidad": 4
+    },
+    {
+        "nro_de_pedido": 10593,
+        "fecha": {
+            "date": "2023-06-17 17:14:12.453761",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Mostaza",
+        "cantidad": 3
     }
 ]

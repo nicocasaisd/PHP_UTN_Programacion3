@@ -10,10 +10,11 @@ class Venta
     public int $id_autoincremental;
     public string $nombre;
     public string $tipo;
+    public string $aderezo;
     public int $cantidad;
 
 
-    public function __construct(DateTime $fecha, string $mail,  int $id_autoincremental, $nombre, $tipo, $cantidad)
+    public function __construct(DateTime $fecha, string $mail,  int $id_autoincremental, $nombre, $tipo, $aderezo, $cantidad)
     {
         $this->nro_de_pedido = rand(10000, 20000);
         $this->mail = $mail;
@@ -21,12 +22,13 @@ class Venta
         $this->id_autoincremental = $id_autoincremental;
         $this->nombre = $nombre;
         $this->tipo = $tipo;
+        $this->aderezo = $aderezo;
         $this->cantidad = $cantidad;
     }
 
     public static function MostrarVenta($objeto)
     {
-        echo $objeto->nro_de_pedido . ', ' . $objeto->fecha->date . ', ' . $objeto->mail . ', ' . $objeto->nombre . ', ' . $objeto->tipo . ', ' . $objeto->cantidad . PHP_EOL;
+        echo $objeto->nro_de_pedido . ', ' . $objeto->fecha->date . ', ' . $objeto->mail . ', ' . $objeto->nombre . ', ' . $objeto->tipo . ', ' . $objeto->aderezo . ', '. $objeto->cantidad . PHP_EOL;
     }
 
     public static function GuardarImagen($nombreImagen)
