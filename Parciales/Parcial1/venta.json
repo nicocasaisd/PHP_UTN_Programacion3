@@ -269,5 +269,21 @@
         "cantidad": 3,
         "id_cupon": 29930,
         "importe_final": 480
+    },
+    {
+        "nro_de_pedido": 12533,
+        "fecha": {
+            "date": "2023-06-20 00:49:19.446766",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "mail": "nico@gmail.com",
+        "id_autoincremental": 6479,
+        "nombre": "Montana",
+        "tipo": "simple",
+        "aderezo": "Ketchup",
+        "cantidad": 3,
+        "id_cupon": 29930,
+        "importe_final": 480
     }
 ]

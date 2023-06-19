@@ -1,0 +1,490 @@
+{
+	"info": {
+		"_postman_id": "17fb1e72-b983-4c67-908e-ac31ac38e0ea",
+		"name": "Parcial1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Parcial1",
+			"item": [
+				{
+					"name": "Parcial1_01_HamburguesaCarga",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "HamburguesaCarga",
+									"type": "default"
+								},
+								{
+									"key": "nombre",
+									"value": "Montana",
+									"type": "default"
+								},
+								{
+									"key": "precio",
+									"value": "160",
+									"type": "default"
+								},
+								{
+									"key": "tipo",
+									"value": "simple",
+									"type": "default"
+								},
+								{
+									"key": "aderezo",
+									"value": "Mostaza",
+									"type": "default"
+								},
+								{
+									"key": "cantidad",
+									"value": "120",
+									"type": "default"
+								},
+								{
+									"key": "imagen",
+									"type": "file",
+									"src": "/C:/xampp/htdocs/prog3/Parcial1/BackUpVentas/imagen.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_02_HamburguesaConsultar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "HamburguesaConsultar",
+									"type": "default"
+								},
+								{
+									"key": "nombre",
+									"value": "Chicago",
+									"type": "default"
+								},
+								{
+									"key": "tipo",
+									"value": "simple",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_03_AltaVenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "AltaVenta",
+									"type": "default"
+								},
+								{
+									"key": "nombre",
+									"value": "Montana",
+									"type": "default"
+								},
+								{
+									"key": "tipo",
+									"value": "simple",
+									"type": "default"
+								},
+								{
+									"key": "aderezo",
+									"value": "Mostaza",
+									"type": "default"
+								},
+								{
+									"key": "cantidad",
+									"value": "3",
+									"type": "default"
+								},
+								{
+									"key": "mail",
+									"value": "nico@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "imagen_venta",
+									"type": "file",
+									"src": "/C:/xampp/htdocs/prog3/Parciales/imagen.JPG"
+								},
+								{
+									"key": "id_cupon",
+									"value": "29930",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_04_ConsultasVentas_A",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php?request=ConsultasVentas&tipo_request=total&fecha_inicio=20-06-23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "ConsultasVentas"
+								},
+								{
+									"key": "tipo_request",
+									"value": "total"
+								},
+								{
+									"key": "fecha_inicio",
+									"value": "20-06-23"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_04_ConsultasVentas_B",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php?request=ConsultasVentas&tipo_request=rango&fecha_inicio=15-06-23&fecha_final=30-06-23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "ConsultasVentas"
+								},
+								{
+									"key": "tipo_request",
+									"value": "rango"
+								},
+								{
+									"key": "fecha_inicio",
+									"value": "15-06-23"
+								},
+								{
+									"key": "fecha_final",
+									"value": "30-06-23"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_04_ConsultasVentas_C",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php?request=ConsultasVentas&tipo_request=usuario&mail=nico@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "ConsultasVentas"
+								},
+								{
+									"key": "tipo_request",
+									"value": "usuario"
+								},
+								{
+									"key": "mail",
+									"value": "nico@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_04_ConsultasVentas_D",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php?request=ConsultasVentas&tipo_request=tipo&tipo=simple",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "ConsultasVentas"
+								},
+								{
+									"key": "tipo_request",
+									"value": "tipo"
+								},
+								{
+									"key": "tipo",
+									"value": "simple"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_04_ConsultasVentas_E",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php?request=ConsultasVentas&tipo_request=aderezo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "ConsultasVentas"
+								},
+								{
+									"key": "tipo_request",
+									"value": "aderezo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_05_ModificarVenta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"request\": \"ModificarVenta\",\r\n    \"nro_de_pedido\" : \"16127\",\r\n    \"mail\" : \"nico@gmail.com\",\r\n    \"nombre\" : \"Ohio\",\r\n    \"tipo\" : \"doble\",\r\n    \"aderezo\":\"Mayonesa\",\r\n    \"cantidad\" : 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_06_BorrarVenta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"request\": \"BorrarVenta\",\r\n    \"nro_de_pedido\" : \"16127\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_07_DevolverHamburguesa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "HamburguesaDevolver",
+									"type": "default"
+								},
+								{
+									"key": "nro_de_pedido",
+									"value": "12533",
+									"type": "default"
+								},
+								{
+									"key": "descripcion",
+									"value": "No era lo que pedi",
+									"type": "default"
+								},
+								{
+									"key": "imagen",
+									"type": "file",
+									"src": "/C:/xampp/htdocs/prog3/Parciales/imagen.JPG"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcial1_08_ConsultasDevoluciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/prog3/Parciales/Parcial1/index.php?request=ConsultasDevoluciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"prog3",
+								"Parciales",
+								"Parcial1",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "ConsultasDevoluciones"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
