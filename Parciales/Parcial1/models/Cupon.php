@@ -26,6 +26,11 @@ class Cupon
         return $fecha_vencimiento;
     }
 
+    public static function Mostrar($objeto)
+    {
+        echo $objeto->id . ', ' . $objeto->nro_de_pedido . ', '  . $objeto->descuento . ', ' . ($objeto->esValido ? 'valido' : 'usado') . ', ' . $objeto->fecha_vencimiento->date . PHP_EOL;
+    }
+
     static function ValidarCupon($id)
     {
         $array_cupones = ReadJson('./cupones.json');

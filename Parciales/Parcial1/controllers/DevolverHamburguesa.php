@@ -22,6 +22,3 @@ if (
 
 
 WriteJson($array_devoluciones, './devoluciones.json');
-
-
-var_dump(Cupon::ValidarCupon(20655));

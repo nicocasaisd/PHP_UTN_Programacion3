@@ -11,6 +11,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 case 'ConsultasVentas':
                     include_once './controllers/ConsultasVentas.php';
                     break;
+                case 'ConsultasDevoluciones':
+                    include_once './controllers/ConsultasDevoluciones.php';
+                    break;
                 default:
                     echo 'Bad request';
                     break;

@@ -12,6 +12,11 @@ class Devolucion
         $this->descripcion = $descripcion;
     }
 
+    public static function Mostrar($objeto)
+    {
+        echo $objeto->nro_de_pedido . ', ' . $objeto->descripcion . PHP_EOL;
+    }
+
     static function AddDevolucion($array_ventas, $array_devoluciones, $devolucion)
     {
         foreach ($array_ventas as $venta) {
