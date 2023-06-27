@@ -3,7 +3,7 @@
         "id": 22597,
         "nro_de_pedido": 11523,
         "descuento": 10,
-        "esValido": true,
+        "esValido": false,
         "fecha_vencimiento": {
             "date": "2023-06-20 22:58:26.164200",
             "timezone_type": 3,
@@ -28,6 +28,28 @@
         "esValido": true,
         "fecha_vencimiento": {
             "date": "2023-06-23 00:56:47.990441",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        }
+    },
+    {
+        "id": 20084,
+        "nro_de_pedido": 11523,
+        "descuento": 10,
+        "esValido": true,
+        "fecha_vencimiento": {
+            "date": "2023-06-30 00:12:21.505791",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        }
+    },
+    {
+        "id": 24731,
+        "nro_de_pedido": 11272,
+        "descuento": 10,
+        "esValido": true,
+        "fecha_vencimiento": {
+            "date": "2023-06-30 00:25:47.207548",
             "timezone_type": 3,
             "timezone": "Europe\/Berlin"
         }

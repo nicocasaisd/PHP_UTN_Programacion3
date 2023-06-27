@@ -27,6 +27,7 @@ if (
         // Si hay, agrego cupon de descuento
         if(ValidarEmpty('id_cupon', $_POST)){
             $nueva_venta = new Venta(new DateTime(), $_POST['mail'], $hamburguesa->id, $hamburguesa->nombre, $hamburguesa->tipo, $hamburguesa->aderezo, $_POST['cantidad'], $_POST['id_cupon']);
+            Cupon::CortarCupon($_POST['id_cupon']);
         }
         else{
             $nueva_venta = new Venta(new DateTime(), $_POST['mail'], $hamburguesa->id, $hamburguesa->nombre, $hamburguesa->tipo, $hamburguesa->aderezo, $_POST['cantidad']);

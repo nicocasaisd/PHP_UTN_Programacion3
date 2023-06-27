@@ -13,8 +13,14 @@ $array_venta = ReadJson('./venta.json');
 */
 if ($_GET['tipo_request'] == 'total') {
 
-
-    $totalVendidas = Venta::ConsultarTotalVendidas($array_venta, $_GET['fecha_inicio']);
+    if (!ValidarEmpty('fecha_inicio', $_GET)) {
+        $fecha_inicio = new DateTime();
+        $intervalo = DateInterval::createFromDateString('1 day');
+        $fecha_inicio->sub($intervalo);
+        $totalVendidas = Venta::ConsultarTotalVendidas($array_venta, $fecha_inicio);
+    } else {
+        $totalVendidas = Venta::ConsultarTotalVendidas($array_venta, $_GET['fecha_inicio']);
+    }
 
     echo "*** Total de Hamburguesas vendidas: " . $totalVendidas . PHP_EOL;
     echo PHP_EOL;

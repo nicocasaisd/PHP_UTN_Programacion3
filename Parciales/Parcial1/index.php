@@ -49,8 +49,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
         switch ($_PUT['request']) {
-            case 'ModificarVenta':
+            case 'ModificarUsuario':
                 include_once './controllers/ModificarVenta.php';
+                break;
+            case 'ResubirId':
+                include_once './controllers/ModificarUsuario.php';
                 break;
             default:
                 echo 'Bad request';

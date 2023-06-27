@@ -50,6 +50,24 @@ class Cupon
         return false;
     }
 
+    public static function CortarCupon($id)
+    {
+        $array_cupones = ReadJson('./cupones.json');
+
+        foreach ($array_cupones as $cupon) {
+            var_dump($cupon->id);
+            var_dump(intval($id));
+            if (
+                $cupon->id == $id
+            ) {
+                $cupon->esValido = false;
+
+                return true;
+            }
+        }
+        return false;
+    }
+
     static function AplicarDescuento($id, $importe)
     {
         $array = ReadJson('./cupones.json');
