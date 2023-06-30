@@ -82,6 +82,32 @@ VALUES
   ('Ethereum', 'USA', './images/ethereum.png', 100),
   ('Bitcoin', 'Japan', './images/ethereum.png', 200);
 
+
+--
+-- Estructura de tabla para la tabla `sales`
+--
+DROP TABLE IF EXISTS `sales`;
+
+CREATE TABLE
+  `sales` (
+    `id` int (11) NOT NULL AUTO_INCREMENT,
+    `dateTimeString` DATETIME NOT NULL,
+    `id_coin` int(11) NOT NULL,
+    `quantity` int(3) NOT NULL,
+    `subtotal` decimal(10, 2) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `sales`
+
+INSERT INTO
+  `sales` (`dateTimeString`, `id_coin`, `quantity`, `subtotal`)
+VALUES
+  ('2023-06-18 11:11:11', '3','30', 300),
+  ('2023-06-18 11:11:11', '4','20', 300);
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
