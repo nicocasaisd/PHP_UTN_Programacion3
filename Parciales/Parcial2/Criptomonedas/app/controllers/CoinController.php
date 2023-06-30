@@ -9,24 +9,17 @@ class CoinController extends Coin implements IApiUsable
     {
         $parametros = $request->getParsedBody();
         $file = $request->getUploadedFiles();
-
-        var_dump($file['image']);
-
-        
-        // $file['image']->moveTo('./nuevaImagen.jpg');
         
         $name = $parametros['name'];
         $origin = $parametros['origin'];
-        // $image = $parametros['image'];
         $price = $parametros['price'];
-        
-        FileController::SaveImage($file, './media/cripto_images', $name.$origin);
+        $image = FileController::SaveImage($file, './media/cripto_images', $name.$origin);
         
         // Creamos el coin
         $coin = new Coin();
         $coin->name = $name;
         $coin->origin = $origin;
-        $coin->image = './media/imagen.jpg';
+        $coin->image = $image;
         $coin->price = $price;
         $coin->createCoin();
 

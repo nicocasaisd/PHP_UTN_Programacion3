@@ -10,6 +10,8 @@ class FileController
             }
             $newPath = $dirPath . '/' . $filename . '.jpg';
             $file['image']->moveTo($newPath);
+
+            return $newPath;
         }
 
     }
