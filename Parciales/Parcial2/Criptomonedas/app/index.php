@@ -60,6 +60,15 @@ $app->group('/coins', function (RouteCollectorProxy $group) {
   ->add(\AuthorizationMW::class . ':ValidateAdmin')
   ->add(\AuthorizationMW::class . ':ValidateToken');
 
+  //Sales
+$app->group('/sales', function (RouteCollectorProxy $group) {
+  $group->get('[/]', \SaleController::class . ':TraerTodos');
+  $group->get('/{id_sale}', \SaleController::class . ':TraerUno');
+  $group->post('[/]', \SaleController::class . ':CargarUno');
+})
+->add(\AuthorizationMW::class . ':ValidateWaiter')
+  ->add(\AuthorizationMW::class . ':ValidateToken');
+
 
 
 //Tests
