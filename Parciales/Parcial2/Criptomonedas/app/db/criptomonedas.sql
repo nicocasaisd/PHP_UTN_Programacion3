@@ -6,22 +6,28 @@
 -- Tiempo de generación: 23-03-2021 a las 21:21:28
 -- Versión del servidor: 8.0.13-4
 -- Versión de PHP: 7.2.24-0ubuntu0.18.04.7
+SET
+  SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
+SET
+  AUTOCOMMIT = 0;
+
 START TRANSACTION;
-SET time_zone = "+00:00";
 
+SET
+  time_zone = "+00:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+
 /*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `pqElWX5WY2`
 --
-
 -- --------------------------------------------------------
 -- --------------------------------------------------------
 -- Creamos la base de datos
@@ -46,32 +52,38 @@ CREATE TABLE
 -- Volcado de datos para la tabla `users`
 --
 INSERT INTO
-  `users` (`user_name`, `password`, `user_type`, `date_end`)
+  `users` (`user_name`, `password`, `user_type`)
 VALUES
-  ('franco', 'asd1234', 'ADMIN', NULL),
-  ('pedro', 'asd1234', 'CLIENT', NULL),
-  ('jorge', 'asd1234', 'CLIENT', NULL);
-
--- Índices para tablas volcadas
---
+  ('franco', 'asd1234', 'ADMIN'),
+  ('pedro', 'asd1234', 'CLIENT'),
+  ('jorge', 'asd1234', 'CLIENT');
 
 --
--- Indices de la tabla `usuarios`
+-- Estructura de tabla para la tabla `coins`
 --
--- ALTER TABLE `usuarios`
---   ADD PRIMARY KEY (`id`);
+DROP TABLE IF EXISTS `coins`;
+
+CREATE TABLE
+  `coins` (
+    `id` int (11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+    `origin` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+    `image` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+    `price` decimal(10, 2) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- Volcado de datos para la tabla `coins`
 --
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
--- ALTER TABLE `usuarios`
---   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
--- COMMIT;
+INSERT INTO
+  `coins` (`name`, `origin`, `image`, `price`)
+VALUES
+  ('Ethereum', 'USA', './images/ethereum.png', 100),
+  ('Bitcoin', 'Japan', './images/ethereum.png', 200);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
