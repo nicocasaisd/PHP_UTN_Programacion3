@@ -52,12 +52,13 @@ $app->group('/users', function (RouteCollectorProxy $group) {
 
 // Coins
 $app->group('/coins', function (RouteCollectorProxy $group) {
-  $group->get('[/]', \CoinController::class . ':TraerTodos');
-  $group->get('/{id_coin}', \CoinController::class . ':TraerUno');
+  $group->get('/all', \CoinController::class . ':TraerTodos');
+  $group->get('[/origin/{origin}]', \CoinController::class . ':TraerTodosPorOrigin');
+  $group->get('/id/{id_coin}', \CoinController::class . ':TraerUno');
   $group->post('[/]', \CoinController::class . ':CargarUno');
-});
-  // ->add(\AuthorizationMW::class . ':ValidateAdmin')
-  // ->add(\AuthorizationMW::class . ':ValidateToken');
+})
+  ->add(\AuthorizationMW::class . ':ValidateAdmin')
+  ->add(\AuthorizationMW::class . ':ValidateToken');
 
 
 
