@@ -78,4 +78,13 @@ class AuthJWT
 
         return sha1($aud);
     }
+
+    public static function GetDataFromJWT($request)
+    {
+      $header = $request->getHeaderLine('Authorization');
+      $token = trim(explode("Bearer", $header)[1]);
+      $data = json_decode(AuthJWT::ObtenerData($token));
+  
+      return $data;
+    }
 }

@@ -10,12 +10,16 @@ class SaleController extends Sale implements IApiUsable
 
     $id_coin = $parametros['id_coin'];
     $quantity = $parametros['quantity'];
+    $jwt_data = AuthJWT::GetDataFromJWT($request);
+    $id_user = $jwt_data->id_user;
+    var_dump($id_user);
 
     // Creamos el sale
     $sale = new Sale();
     $sale->dateTimeString = DateTimeController::getNowAsMySQL();
     $sale->id_coin = $id_coin;
     $sale->quantity = $quantity;
+    $sale->id_user = $id_user;
     $sale->createSale();
 
     $payload = json_encode(array("mensaje" => "Sale creado con exito"));

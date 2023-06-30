@@ -5,6 +5,7 @@ class Sale
     public $id;
     public $dateTimeString;
     public $id_coin;
+    public $id_user;
     public $quantity;
     public $subtotal;
 
@@ -32,9 +33,10 @@ class Sale
     public function createSale()
     {
         $dataAccessObject = DataAccess::getInstance();
-        $consulta = $dataAccessObject->prepareQuery("INSERT INTO sales (dateTimeString, id_coin, quantity, subtotal) VALUES (:dateTimeString, :id_coin, :quantity, :subtotal)");
+        $consulta = $dataAccessObject->prepareQuery("INSERT INTO sales (dateTimeString, id_coin, id_user, quantity, subtotal) VALUES (:dateTimeString, :id_coin, :id_user, :quantity, :subtotal)");
         $consulta->bindValue(':dateTimeString', $this->dateTimeString, PDO::PARAM_STR);
         $consulta->bindValue(':id_coin', $this->id_coin, PDO::PARAM_INT);
+        $consulta->bindValue(':id_user', $this->id_coin, PDO::PARAM_INT);
         $consulta->bindValue(':quantity', $this->quantity, PDO::PARAM_INT);
         $consulta->bindValue(':subtotal', $this->getSubtotal());
         $consulta->execute();
@@ -68,17 +70,13 @@ class Sale
     public static function modifySale($sale)
     {
         $dataAccessObject = DataAccess::getInstance();
-        $consulta = $dataAccessObject->prepareQuery("UPDATE sales SET dateTimeString=:dateTimeString, id_coin=:id_coin, quantity=:quantity, id_bill=:id_bill, id_waiter=:id_waiter, id_cook=:id_cook, status=:status, preparationDateTimeString=:preparationDateTimeString, subtotal=:subtotal WHERE id = :id");
+        $consulta = $dataAccessObject->prepareQuery("UPDATE sales SET dateTimeString=:dateTimeString, id_coin=:id_coin,  id_user=:id_user,quantity=:quantity, subtotal=:subtotal WHERE id = :id");
         $consulta->bindValue(':id', $sale->id, PDO::PARAM_INT);
         $consulta->bindValue(':dateTimeString', $sale->dateTimeString, PDO::PARAM_STR);
         $consulta->bindValue(':id_coin', $sale->id_coin, PDO::PARAM_INT);
+        $consulta->bindValue(':id_user', $sale->id_coin, PDO::PARAM_INT);
         $consulta->bindValue(':quantity', $sale->quantity, PDO::PARAM_INT);
-        $consulta->bindValue(':id_bill', $sale->id_bill, PDO::PARAM_INT);
-        $consulta->bindValue(':id_waiter', $sale->id_waiter, PDO::PARAM_INT);
-        $consulta->bindValue(':id_cook', $sale->id_cook, PDO::PARAM_INT);
-        $consulta->bindValue(':status', $sale->status, PDO::PARAM_STR);
-        $consulta->bindValue(':preparationDateTimeString', $sale->preparationDateTimeString, PDO::PARAM_STR);
-        $consulta->bindValue(':subtotal', $sale->subtotal);
+        $consulta->bindValue(':subtotal', $sale->getSubtotal());
         $consulta->execute();
     }
 
@@ -92,8 +90,10 @@ class Sale
 
     public function getSubtotal()
     {
-        $price = Coin::getCoin($this->id_product)->price;
-
+        var_dump($this);
+        $price = Coin::getCoin($this->id_coin)->price;
+        
+        var_dump(Coin::getCoin($this->id_coin));
         return $price * $this->quantity;
     }
 }

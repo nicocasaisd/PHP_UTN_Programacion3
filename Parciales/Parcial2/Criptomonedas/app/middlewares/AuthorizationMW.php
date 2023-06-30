@@ -20,7 +20,8 @@ class AuthorizationMW
             $response = $handler->handle($request);
         } catch (Exception $e) {
             $response = new Response();
-            $response->getBody()->write("Invalid Token.");
+            $response->getBody()->write("Invalid Token." . PHP_EOL);
+            $response->getBody()->write($e->getMessage());
         }
 
         return $response;

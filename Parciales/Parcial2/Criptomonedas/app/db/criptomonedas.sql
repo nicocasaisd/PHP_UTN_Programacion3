@@ -93,6 +93,7 @@ CREATE TABLE
     `id` int (11) NOT NULL AUTO_INCREMENT,
     `dateTimeString` DATETIME NOT NULL,
     `id_coin` int(11) NOT NULL,
+    `id_user` int(11) NOT NULL,
     `quantity` int(3) NOT NULL,
     `subtotal` decimal(10, 2) DEFAULT NULL,
     PRIMARY KEY (`id`)
@@ -102,10 +103,10 @@ CREATE TABLE
 -- Volcado de datos para la tabla `sales`
 
 INSERT INTO
-  `sales` (`dateTimeString`, `id_coin`, `quantity`, `subtotal`)
+  `sales` (`dateTimeString`, `id_coin`,  `id_user`,`quantity`, `subtotal`)
 VALUES
-  ('2023-06-18 11:11:11', '3','30', 300),
-  ('2023-06-18 11:11:11', '4','20', 300);
+  ('2023-06-18 11:11:11', '3', 2, '30', 300),
+  ('2023-06-18 11:11:11', '4', 2, '20', 300);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
