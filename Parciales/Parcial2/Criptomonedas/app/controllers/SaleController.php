@@ -7,11 +7,15 @@ class SaleController extends Sale implements IApiUsable
   public function CargarUno($request, $response, $args)
   {
     $parametros = $request->getParsedBody();
+    $file = $request->getUploadedFiles();
 
     $id_coin = $parametros['id_coin'];
     $quantity = $parametros['quantity'];
     $jwt_data = AuthJWT::GetDataFromJWT($request);
     $id_user = $jwt_data->id_user;
+    // var_dump($jwt_data);
+
+
     var_dump($id_user);
 
     // Creamos el sale
@@ -21,6 +25,14 @@ class SaleController extends Sale implements IApiUsable
     $sale->quantity = $quantity;
     $sale->id_user = $id_user;
     $sale->createSale();
+
+    // Save Image
+    
+    $coin_name = Coin::getCoin($id_coin)->name;
+    $now = new DateTime();
+    $filename = $coin_name . $jwt_data->user . $now->format('ymd');
+    $image = FileController::SaveImage($file, './media/sales_images', $filename);
+
 
     $payload = json_encode(array("mensaje" => "Sale creado con exito"));
 
