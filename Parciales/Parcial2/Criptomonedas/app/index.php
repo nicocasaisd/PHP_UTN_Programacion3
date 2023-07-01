@@ -58,9 +58,10 @@ $app->group('/coins', function (RouteCollectorProxy $group) {
   $group->get('/origin/{origin}', \CoinController::class . ':TraerTodosPorOrigin');
   $group->get('/id/{id_coin}', \CoinController::class . ':TraerUno');
   $group->post('[/]', \CoinController::class . ':CargarUno');
-})
-  ->add(\AuthorizationMW::class . ':ValidateAdmin')
-  ->add(\AuthorizationMW::class . ':ValidateToken');
+  $group->delete('[/]', \CoinController::class . ':BorrarUno');
+});
+  // ->add(\AuthorizationMW::class . ':ValidateAdmin')
+  // ->add(\AuthorizationMW::class . ':ValidateToken');
 
 //Sales
 $app->group('/sales', function (RouteCollectorProxy $group) {

@@ -73,8 +73,9 @@ class Coin
 
     public static function deleteCoin($id)
     {
+        var_dump($id);
         $dataAccessObject = DataAccess::getInstance();
-        $consulta = $dataAccessObject->prepareQuery("DELETE coins WHERE id = :id");
+        $consulta = $dataAccessObject->prepareQuery("DELETE FROM coins WHERE id = :id");
         $consulta->bindValue(':id', $id, PDO::PARAM_INT);
         $consulta->execute();
     }

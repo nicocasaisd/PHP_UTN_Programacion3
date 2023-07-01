@@ -101,10 +101,15 @@ class CoinController extends Coin implements IApiUsable
 
   public function BorrarUno($request, $response, $args)
   {
-    $parametros = $request->getParsedBody();
+    // $parametros = $request->getParsedBody();
+    $parametros = $request->getQueryParams();
 
+    echo 'En Borrar';
+    var_dump($parametros);
     $id = $parametros['id'];
-    Coin::deleteCoin($id);
+    var_dump(Coin::getCoin($id));
+    // Coin::deleteCoin($id);
+    Coin::deleteCoin(3);
 
     $payload = json_encode(array("mensaje" => "Coin borrado con exito"));
 
