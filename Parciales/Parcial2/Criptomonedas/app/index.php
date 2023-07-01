@@ -60,14 +60,19 @@ $app->group('/coins', function (RouteCollectorProxy $group) {
   $group->get('/origin/{origin}', \CoinController::class . ':TraerTodosPorOrigin');
   $group->get('/name/{name}', \CoinController::class . ':TraerTodosPorNombre');
   $group->get('/id/{id_coin}', \CoinController::class . ':TraerUno');
-  $group->get('/csv', \CoinController::class . ':DescargarCsv');
   $group->post('[/]', \CoinController::class . ':CargarUno');
   $group->put('[/]', \CoinController::class . ':ModificarUno');
   $group->delete('[/]', \CoinController::class . ':BorrarUno')
     ->add(\DeletionLogger::class . ':LogAction');
-});
-  // ->add(\AuthorizationMW::class . ':ValidateAdmin')
-  // ->add(\AuthorizationMW::class . ':ValidateToken');
+})
+  ->add(\AuthorizationMW::class . ':ValidateAdmin')
+  ->add(\AuthorizationMW::class . ':ValidateToken');
+
+// CSV
+$app->get('/coins/csv', \CoinController::class . ':DescargarCsv');
+
+// PDF
+$app->get('/sales/pdf', \FileController::class . ':CreatePdf');
 
 //Sales
 $app->group('/sales', function (RouteCollectorProxy $group) {

@@ -12,7 +12,7 @@ class DeletionLogger
     public function LogAction(Request $request, RequestHandler $handler): Response
     {
         $response = $handler->handle($request);
-        var_dump($response->getStatusCode());
+        // var_dump($response->getStatusCode());
         if($response->getStatusCode() == 200){
             LogController::CargarUno($request, 'borrado');
             $response->getBody()->write("Se ha generado el log.");

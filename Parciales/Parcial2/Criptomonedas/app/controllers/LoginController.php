@@ -19,9 +19,11 @@ class LoginController
             $data = json_encode(array('id_user'=>$user->id, 'user'=>$user_name, 'user_type'=>$user->user_type));
             $jwt = AuthJWT::CrearToken($data);
             $payload = json_encode(array('jwt' => $jwt));
+            $response->withStatus(200);
         }
         else{
             $payload = json_encode(array('Error' => 'Invalid user or password'));
+            $response = $response->withStatus(401);
         }
 
         $response->getBody()->write($payload);

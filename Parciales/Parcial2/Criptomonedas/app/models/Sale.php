@@ -37,7 +37,7 @@ class Sale
         $consulta = $dataAccessObject->prepareQuery("INSERT INTO sales (dateTimeString, id_coin, id_user, quantity, subtotal, image) VALUES (:dateTimeString, :id_coin, :id_user, :quantity, :subtotal, :image)");
         $consulta->bindValue(':dateTimeString', $this->dateTimeString, PDO::PARAM_STR);
         $consulta->bindValue(':id_coin', $this->id_coin, PDO::PARAM_INT);
-        $consulta->bindValue(':id_user', $this->id_coin, PDO::PARAM_INT);
+        $consulta->bindValue(':id_user', $this->id_user, PDO::PARAM_INT);
         $consulta->bindValue(':quantity', $this->quantity, PDO::PARAM_INT);
         $consulta->bindValue(':subtotal', $this->getSubtotal());
         $consulta->bindValue(':image', $this->image, PDO::PARAM_STR);
