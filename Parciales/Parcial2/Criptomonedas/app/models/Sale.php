@@ -8,6 +8,7 @@ class Sale
     public $id_user;
     public $quantity;
     public $subtotal;
+    public $image;
 
 
     //GETTER
@@ -33,12 +34,13 @@ class Sale
     public function createSale()
     {
         $dataAccessObject = DataAccess::getInstance();
-        $consulta = $dataAccessObject->prepareQuery("INSERT INTO sales (dateTimeString, id_coin, id_user, quantity, subtotal) VALUES (:dateTimeString, :id_coin, :id_user, :quantity, :subtotal)");
+        $consulta = $dataAccessObject->prepareQuery("INSERT INTO sales (dateTimeString, id_coin, id_user, quantity, subtotal, image) VALUES (:dateTimeString, :id_coin, :id_user, :quantity, :subtotal, :image)");
         $consulta->bindValue(':dateTimeString', $this->dateTimeString, PDO::PARAM_STR);
         $consulta->bindValue(':id_coin', $this->id_coin, PDO::PARAM_INT);
         $consulta->bindValue(':id_user', $this->id_coin, PDO::PARAM_INT);
         $consulta->bindValue(':quantity', $this->quantity, PDO::PARAM_INT);
         $consulta->bindValue(':subtotal', $this->getSubtotal());
+        $consulta->bindValue(':image', $this->image, PDO::PARAM_STR);
         $consulta->execute();
 
 
@@ -90,10 +92,8 @@ class Sale
 
     public function getSubtotal()
     {
-        var_dump($this);
         $price = Coin::getCoin($this->id_coin)->price;
         
-        var_dump(Coin::getCoin($this->id_coin));
         return $price * $this->quantity;
     }
 }

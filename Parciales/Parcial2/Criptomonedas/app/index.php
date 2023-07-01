@@ -55,7 +55,7 @@ $app->group('/users', function (RouteCollectorProxy $group) {
 // Coins
 $app->group('/coins', function (RouteCollectorProxy $group) {
   $group->get('/all', \CoinController::class . ':TraerTodos');
-  $group->get('[/origin/{origin}]', \CoinController::class . ':TraerTodosPorOrigin');
+  $group->get('/origin/{origin}', \CoinController::class . ':TraerTodosPorOrigin');
   $group->get('/id/{id_coin}', \CoinController::class . ':TraerUno');
   $group->post('[/]', \CoinController::class . ':CargarUno');
 })
@@ -65,11 +65,12 @@ $app->group('/coins', function (RouteCollectorProxy $group) {
 //Sales
 $app->group('/sales', function (RouteCollectorProxy $group) {
   $group->get('[/]', \SaleController::class . ':TraerTodos');
+  $group->get('/origin', \SaleController::class . ':TraerTodosPorOriginYFecha')
+    ->add(\AuthorizationMW::class . ':ValidateAdmin');
   $group->get('/{id_sale}', \SaleController::class . ':TraerUno');
   $group->post('[/]', \SaleController::class . ':CargarUno');
-});
-  // ->add(\AuthorizationMW::class . ':ValidateAdmin')
-  // ->add(\AuthorizationMW::class . ':ValidateToken');
+})
+  ->add(\AuthorizationMW::class . ':ValidateToken');
 
 
 

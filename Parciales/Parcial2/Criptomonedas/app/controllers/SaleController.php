@@ -13,10 +13,6 @@ class SaleController extends Sale implements IApiUsable
     $quantity = $parametros['quantity'];
     $jwt_data = AuthJWT::GetDataFromJWT($request);
     $id_user = $jwt_data->id_user;
-    // var_dump($jwt_data);
-
-
-    var_dump($id_user);
 
     // Creamos el sale
     $sale = new Sale();
@@ -24,15 +20,14 @@ class SaleController extends Sale implements IApiUsable
     $sale->id_coin = $id_coin;
     $sale->quantity = $quantity;
     $sale->id_user = $id_user;
-    $sale->createSale();
-
     // Save Image
-    
     $coin_name = Coin::getCoin($id_coin)->name;
     $now = new DateTime();
     $filename = $coin_name . $jwt_data->user . $now->format('ymd');
-    $image = FileController::SaveImage($file, './media/sales_images', $filename);
+    $image = FileController::SaveImage($file, './media/FotosCripto2023', $filename);
 
+    $sale->image = $image;
+    $sale->createSale();
 
     $payload = json_encode(array("mensaje" => "Sale creado con exito"));
 
@@ -41,25 +36,6 @@ class SaleController extends Sale implements IApiUsable
       ->withHeader('Content-Type', 'application/json');
   }
 
-  // public static function CargarDesdeCSV($sale)
-  // {
-  //   // Creamos el sale
-  //   $newSale = new Sale();
-  //   $newSale->dateTimeString = $sale['dateTimeString'];
-  //   $newSale->id_coin = $sale['id_coin'];
-  //   $newSale->quantity = $sale['quantity'];
-  //   $newSale->id_bill = $sale['id_bill'];
-  //   $newSale->id_waiter = $sale['id_waiter'];
-  //   $newSale->id_cook = $sale['id_cook'];
-  //   $newSale->status = $sale['status'];
-  //   $newSale->preparationDateTimeString = $sale['preparationDateTimeString'];
-  //   $newSale->subtotal = $sale['subtotal'];
-  //   // var_dump($sale);
-
-  //   $newSale->createSale();
-
-  //   return $newSale;
-  // }
 
   public function TraerUno($request, $response, $args)
   {
@@ -112,30 +88,33 @@ class SaleController extends Sale implements IApiUsable
       ->withHeader('Content-Type', 'application/json');
   }
 
-  // public function ObtenerTiempoRestante($request, $response, $args)
-  // {
-  //   // Get params
-  //   $parametros = $request->getQueryParams();
-  //   $id_sale = $parametros['id_sale'];
+  public function TraerTodosPorOriginYFecha($request, $response, $args)
+  {
+    $parametros = $request->getQueryParams();
+    $origin = $parametros['origin'];
+    $fecha_inicio = DateTime::createFromFormat('d-m-y', $parametros['fecha_inicio']);
+    $fecha_final = DateTime::createFromFormat('d-m-y', $parametros['fecha_final']);
 
-  //   $sale = Sale::getSale($id_sale);
+    $list = Sale::getAll();
+    $listByOrigin = [];
+    foreach ($list as $sale) {
 
-  //   if ($sale->status == "LISTA PARA SERVIR") {
-  //     $payload = json_encode(array("mensaje" => "Su orden ya está lista."));
-  //   } elseif ($sale->status == "PENDIENTE") {
-  //     $payload = json_encode(array("mensaje" => "Su orden aún no ha sido recibida."));
-  //   } else {
-  //     try {
-  //       $remainingMinutes = DateTimeController::getRemainingMinutes($sale->preparationDateTimeString);
-  //       $payload = json_encode(array("mensaje" => $remainingMinutes));
-  //     } catch (Exception $e) {
-  //       // var_dump($e);
-  //       $payload = json_encode(array("error" => $e->getMessage()));
-  //     }
-  //   }
+      $dateTime = DateTimeController::MySQLToDateTime($sale->dateTimeString);
+      $saleOrigin = Coin::getCoin($sale->id_coin)->origin;
+      if (
+        $saleOrigin == $origin
+        &&  $dateTime >= $fecha_inicio 
+        &&  $dateTime <= $fecha_final
+      ) {
+        array_push($listByOrigin, $sale);
+      }
+    }
 
-  //   $response->getBody()->write($payload);
-  //   return $response
-  //     ->withHeader('Content-Type', 'application/json');
-  // }
+
+    $payload = json_encode(array('listOfSales' => $listByOrigin));
+
+    $response->getBody()->write($payload);
+    return $response
+      ->withHeader('Content-Type', 'application/json');
+  }
 }
