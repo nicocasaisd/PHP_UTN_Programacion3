@@ -114,6 +114,37 @@ VALUES
   ('2023-06-18 11:11:11', '3', 2, '30', 300, './media'),
   ('2023-06-18 11:11:11', '4', 2, '20', 300, './media');
 
+
+--
+-- Estructura de tabla para la tabla `logs`
+--
+DROP TABLE IF EXISTS `logs`;
+
+CREATE TABLE
+  `logs` (
+    `id` int (11) NOT NULL AUTO_INCREMENT,
+    `dateTimeString` DATETIME NOT NULL,
+    `id_coin` int (11) NOT NULL,
+    `id_user` int (11) NOT NULL,
+    `action` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
+
+
+  --
+-- Volcado de datos para la tabla `logs`
+INSERT INTO
+  `logs` (
+    `dateTimeString`,
+    `id_coin`,
+    `id_user`,
+    `action`
+  )
+VALUES
+  ('2023-06-18 11:11:11', '3', 2, 'borrado'),
+  ('2023-06-18 11:11:11', '3', 2, 'borrado');
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

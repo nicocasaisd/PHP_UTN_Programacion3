@@ -21,9 +21,11 @@ require_once './controllers/UserController.php';
 require_once './controllers/LoginController.php';
 require_once './controllers/CoinController.php';
 require_once './controllers/SaleController.php';
+require_once './controllers/LogController.php';
 
 // Middlewares
 require_once './middlewares/AuthorizationMW.php';
+require_once './middlewares/DeletionLogger.php';
 
 // Load ENV
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -58,10 +60,11 @@ $app->group('/coins', function (RouteCollectorProxy $group) {
   $group->get('/origin/{origin}', \CoinController::class . ':TraerTodosPorOrigin');
   $group->get('/id/{id_coin}', \CoinController::class . ':TraerUno');
   $group->post('[/]', \CoinController::class . ':CargarUno');
-  $group->delete('[/]', \CoinController::class . ':BorrarUno');
-});
-  // ->add(\AuthorizationMW::class . ':ValidateAdmin')
-  // ->add(\AuthorizationMW::class . ':ValidateToken');
+  $group->delete('[/]', \CoinController::class . ':BorrarUno')
+    ->add(\DeletionLogger::class . ':LogAction');
+})
+->add(\AuthorizationMW::class . ':ValidateAdmin')
+->add(\AuthorizationMW::class . ':ValidateToken');
 
 //Sales
 $app->group('/sales', function (RouteCollectorProxy $group) {
@@ -72,6 +75,14 @@ $app->group('/sales', function (RouteCollectorProxy $group) {
   $group->post('[/]', \SaleController::class . ':CargarUno');
 })
   ->add(\AuthorizationMW::class . ':ValidateToken');
+
+//Logs
+$app->group('/logs', function (RouteCollectorProxy $group) {
+  $group->get('[/]', \LogController::class . ':TraerTodos');
+})
+  ->add(\AuthorizationMW::class . ':ValidateAdmin')
+  ->add(\AuthorizationMW::class . ':ValidateToken');
+
 
 
 

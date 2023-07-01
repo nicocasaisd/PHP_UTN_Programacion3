@@ -35,7 +35,7 @@ class Log
         $consulta = $dataAccessObject->prepareQuery("INSERT INTO logs (dateTimeString, id_coin, id_user, action) VALUES (:dateTimeString, :id_coin, :id_user, :action)");
         $consulta->bindValue(':dateTimeString', $this->dateTimeString, PDO::PARAM_STR);
         $consulta->bindValue(':id_coin', $this->id_coin, PDO::PARAM_INT);
-        $consulta->bindValue(':id_user', $this->id_coin, PDO::PARAM_INT);
+        $consulta->bindValue(':id_user', $this->id_user, PDO::PARAM_INT);
         $consulta->bindValue(':action', $this->action, PDO::PARAM_STR);
         $consulta->execute();
 
