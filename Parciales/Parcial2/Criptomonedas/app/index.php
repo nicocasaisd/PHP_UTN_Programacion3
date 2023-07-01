@@ -58,6 +58,7 @@ $app->group('/users', function (RouteCollectorProxy $group) {
 $app->group('/coins', function (RouteCollectorProxy $group) {
   $group->get('/all', \CoinController::class . ':TraerTodos');
   $group->get('/origin/{origin}', \CoinController::class . ':TraerTodosPorOrigin');
+  $group->get('/name/{name}', \CoinController::class . ':TraerTodosPorNombre');
   $group->get('/id/{id_coin}', \CoinController::class . ':TraerUno');
   $group->post('[/]', \CoinController::class . ':CargarUno');
   $group->delete('[/]', \CoinController::class . ':BorrarUno')

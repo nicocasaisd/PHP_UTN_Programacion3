@@ -84,6 +84,24 @@ class CoinController extends Coin implements IApiUsable
       ->withHeader('Content-Type', 'application/json');
   }
 
+  public function TraerTodosPorNombre($request, $response, $args)
+  {
+    $name = $args['name'];
+    $list = Coin::getAll();
+    $listByName = [];
+    foreach ($list as $coin) {
+      if ($coin->name == $name) {
+        array_push($listByName, $coin);
+      }
+    }
+
+    $payload = json_encode(array('listOfCoins' => $listByName));
+
+    $response->getBody()->write($payload);
+    return $response
+      ->withHeader('Content-Type', 'application/json');
+  }
+
 
   public function ModificarUno($request, $response, $args)
   {
