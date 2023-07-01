@@ -3,6 +3,8 @@ require_once './models/Coin.php';
 require_once './interfaces/IApiUsable.php';
 require_once './controllers/FileController.php';
 
+use GuzzleHttp\Psr7\LazyOpenStream;
+
 class CoinController extends Coin implements IApiUsable
 {
   public function CargarUno($request, $response, $args)
@@ -106,9 +108,18 @@ class CoinController extends Coin implements IApiUsable
   public function ModificarUno($request, $response, $args)
   {
     $parametros = $request->getParsedBody();
+    // $parametros = $request->getBody()->getContents();
+    // var_dump($parametros);
 
-    $nombre = $parametros['nombre'];
-    Coin::modifyCoin($nombre);
+    // Creamos la Coin
+    $coin = new Coin();
+    $coin->id = $parametros['id'];
+    $coin->name = $parametros['name'];
+    $coin->origin =  $parametros['origin'];
+    $coin->image = $parametros['image'];
+    $coin->price = $parametros['price'];
+
+    Coin::modifyCoin($coin);
 
     $payload = json_encode(array("mensaje" => "Coin modificado con exito"));
 
@@ -131,8 +142,27 @@ class CoinController extends Coin implements IApiUsable
     }
 
     $response->getBody()->write($payload);
-    
+
     return $response
       ->withHeader('Content-Type', 'application/json');
+  }
+
+
+  public function DescargarCsv($request, $response, $args)
+  {
+    $list = Coin::getAll();
+
+    // Creamos archivo en memoria
+    $stream = fopen('php://memory', 'w+');
+    foreach ($list as $line) {
+      fputcsv($stream, get_object_vars($line), ',');
+    }
+    rewind($stream);
+
+    $response->withHeader('Content-Type', 'text/csv');
+    $response = $response->withHeader('Content-Disposition', 'attachment; filename="file.csv"');
+
+    return $response
+      ->withBody(new \Slim\Psr7\Stream($stream));
   }
 }

@@ -61,6 +61,7 @@ class Coin
 
     public static function modifyCoin($coin)
     {
+        var_dump($coin);
         $dataAccessObject = DataAccess::getInstance();
         $consulta = $dataAccessObject->prepareQuery("UPDATE coins SET name = :name, price = :price, origin = :origin, image = :image WHERE id = :id");
         $consulta->bindValue(':id', $coin->id, PDO::PARAM_INT);
