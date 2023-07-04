@@ -79,8 +79,8 @@ CREATE TABLE
 INSERT INTO
   `coins` (`name`, `origin`, `image`, `price`)
 VALUES
-  ('Ethereum', 'USA', './images/ethereum.png', 100),
-  ('Bitcoin', 'Japan', './images/ethereum.png', 200);
+  ('Ethereum', 'USA', './media/cripto_images/ethereum.png', 100),
+  ('Bitcoin', 'Japan', './media/cripto_images/bitcoin.png', 200);
 
 --
 -- Estructura de tabla para la tabla `sales`
@@ -133,16 +133,16 @@ CREATE TABLE
 
   --
 -- Volcado de datos para la tabla `logs`
-INSERT INTO
-  `logs` (
-    `dateTimeString`,
-    `id_coin`,
-    `id_user`,
-    `action`
-  )
-VALUES
-  ('2023-06-18 11:11:11', '3', 2, 'borrado'),
-  ('2023-06-18 11:11:11', '3', 2, 'borrado');
+-- INSERT INTO
+--   `logs` (
+--     `dateTimeString`,
+--     `id_coin`,
+--     `id_user`,
+--     `action`
+--   )
+-- VALUES
+--   ('2023-06-18 11:11:11', '3', 2, 'borrado'),
+--   ('2023-06-18 11:11:11', '3', 2, 'borrado');
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

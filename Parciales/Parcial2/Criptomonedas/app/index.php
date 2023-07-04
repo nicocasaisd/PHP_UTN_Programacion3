@@ -58,15 +58,22 @@ $app->group('/users', function (RouteCollectorProxy $group) {
 $app->group('/coins', function (RouteCollectorProxy $group) {
   $group->get('/all', \CoinController::class . ':TraerTodos');
   $group->get('/origin/{origin}', \CoinController::class . ':TraerTodosPorOrigin');
-  $group->get('/name/{name}', \CoinController::class . ':TraerTodosPorNombre');
-  $group->get('/id/{id_coin}', \CoinController::class . ':TraerUno');
-  $group->post('[/]', \CoinController::class . ':CargarUno');
-  $group->put('[/]', \CoinController::class . ':ModificarUno');
+  $group->get('/name/{name}', \CoinController::class . ':TraerTodosPorNombre')
+    ->add(\AuthorizationMW::class . ':ValidateAdmin')
+    ->add(\AuthorizationMW::class . ':ValidateToken');
+  $group->get('/id/{id_coin}', \CoinController::class . ':TraerUno')
+    ->add(\AuthorizationMW::class . ':ValidateToken');
+  $group->post('[/]', \CoinController::class . ':CargarUno')
+    ->add(\AuthorizationMW::class . ':ValidateAdmin')
+    ->add(\AuthorizationMW::class . ':ValidateToken');
+  $group->put('[/]', \CoinController::class . ':ModificarUno')
+    ->add(\AuthorizationMW::class . ':ValidateAdmin')
+    ->add(\AuthorizationMW::class . ':ValidateToken');
   $group->delete('[/]', \CoinController::class . ':BorrarUno')
-    ->add(\DeletionLogger::class . ':LogAction');
-})
-  ->add(\AuthorizationMW::class . ':ValidateAdmin')
-  ->add(\AuthorizationMW::class . ':ValidateToken');
+    ->add(\DeletionLogger::class . ':LogAction')
+    ->add(\AuthorizationMW::class . ':ValidateAdmin')
+    ->add(\AuthorizationMW::class . ':ValidateToken');
+});
 
 // CSV
 $app->get('/coins/csv', \CoinController::class . ':DescargarCsv');
@@ -79,6 +86,7 @@ $app->group('/sales', function (RouteCollectorProxy $group) {
   $group->get('[/]', \SaleController::class . ':TraerTodos');
   $group->get('/origin', \SaleController::class . ':TraerTodosPorOriginYFecha')
     ->add(\AuthorizationMW::class . ':ValidateAdmin');
+  $group->get('/coin/{name}', \SaleController::class . ':TraerClientesPorMoneda');
   $group->get('/{id_sale}', \SaleController::class . ':TraerUno');
   $group->post('[/]', \SaleController::class . ':CargarUno');
 })

@@ -103,15 +103,32 @@ class SaleController extends Sale implements IApiUsable
       $saleOrigin = Coin::getCoin($sale->id_coin)->origin;
       if (
         $saleOrigin == $origin
-        &&  $dateTime >= $fecha_inicio 
+        &&  $dateTime >= $fecha_inicio
         &&  $dateTime <= $fecha_final
       ) {
         array_push($listByOrigin, $sale);
       }
     }
-
-
     $payload = json_encode(array('listOfSales' => $listByOrigin));
+
+    $response->getBody()->write($payload);
+    return $response
+      ->withHeader('Content-Type', 'application/json');
+  }
+
+  public function TraerClientesPorMoneda($request, $response, $args)
+  {
+    $name = $args['name'];
+    $sales = Sale::getAll();
+    $coin = Coin::getCoinByName($name);
+    $clientsOfCoin = [];
+    foreach ($sales as $sale) {
+      if ($sale->id_coin == $coin->id) {
+        array_push($clientsOfCoin, $sale);
+      }
+    }
+
+    $payload = json_encode(array('Coin' => $coin->name ,'salesOfCoin' => $clientsOfCoin));
 
     $response->getBody()->write($payload);
     return $response

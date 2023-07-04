@@ -26,7 +26,7 @@ class User
     public static function getAll()
     {
         $dataAccessObject = DataAccess::getInstance();
-        $consulta = $dataAccessObject->prepareQuery("SELECT id, user_name, password, user_type FROM users");
+        $consulta = $dataAccessObject->prepareQuery("SELECT id, user_name, user_type FROM users");
         $consulta->execute();
 
         return $consulta->fetchAll(PDO::FETCH_CLASS, 'User');

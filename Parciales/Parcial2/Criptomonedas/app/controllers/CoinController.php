@@ -89,15 +89,9 @@ class CoinController extends Coin implements IApiUsable
   public function TraerTodosPorNombre($request, $response, $args)
   {
     $name = $args['name'];
-    $list = Coin::getAll();
-    $listByName = [];
-    foreach ($list as $coin) {
-      if ($coin->name == $name) {
-        array_push($listByName, $coin);
-      }
-    }
+    $coin = Coin::getCoinByName($name);
 
-    $payload = json_encode(array('listOfCoins' => $listByName));
+    $payload = json_encode(array('coin' => $coin));
 
     $response->getBody()->write($payload);
     return $response
@@ -108,20 +102,23 @@ class CoinController extends Coin implements IApiUsable
   public function ModificarUno($request, $response, $args)
   {
     $parametros = $request->getParsedBody();
-    // $parametros = $request->getBody()->getContents();
-    // var_dump($parametros);
+    if(Coin::getCoin($parametros['id']) == false){
+      $payload = json_encode(array("error" => "No existe una Coin con la id pasada."));
+      $response->withStatus(404);
+    }
+    else{
+          // Creamos la Coin
+          $coin = new Coin();
+          $coin->id = $parametros['id'];
+          $coin->name = $parametros['name'];
+          $coin->origin =  $parametros['origin'];
+          $coin->image = $parametros['image'];
+          $coin->price = $parametros['price'];
+      
+          Coin::modifyCoin($coin);
+          $payload = json_encode(array("mensaje" => "Coin modificado con exito"));
 
-    // Creamos la Coin
-    $coin = new Coin();
-    $coin->id = $parametros['id'];
-    $coin->name = $parametros['name'];
-    $coin->origin =  $parametros['origin'];
-    $coin->image = $parametros['image'];
-    $coin->price = $parametros['price'];
-
-    Coin::modifyCoin($coin);
-
-    $payload = json_encode(array("mensaje" => "Coin modificado con exito"));
+    }
 
     $response->getBody()->write($payload);
     return $response
@@ -133,9 +130,10 @@ class CoinController extends Coin implements IApiUsable
     $parametros = $request->getQueryParams();
 
     $id = $parametros['id'];
+    $coin = Coin::getCoin($id);
     if (Coin::getCoin($id) != false) {
       Coin::deleteCoin($id);
-      $payload = json_encode(array("mensaje" => "Coin borrado con exito"));
+      $payload = json_encode(array("mensaje" => "Coin borrado con exito", "coin" => $coin));
     } else {
       $payload = json_encode(array("error" => "No existe un coin con esa id"));
       $response = $response->withStatus(404);
