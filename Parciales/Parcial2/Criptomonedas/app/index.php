@@ -95,9 +95,10 @@ $app->group('/sales', function (RouteCollectorProxy $group) {
 //Logs
 $app->group('/logs', function (RouteCollectorProxy $group) {
   $group->get('[/]', \LogController::class . ':TraerTodos');
-})
-  ->add(\AuthorizationMW::class . ':ValidateAdmin')
-  ->add(\AuthorizationMW::class . ':ValidateToken');
+  $group->get('/csv', \LogController::class . ':DescargarCsv');
+});
+  // ->add(\AuthorizationMW::class . ':ValidateAdmin')
+  // ->add(\AuthorizationMW::class . ':ValidateToken');
 
 
 

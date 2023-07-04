@@ -105,4 +105,26 @@ class LogController
     return $response
       ->withHeader('Content-Type', 'application/json');
   }
+
+  public function DescargarCsv($request, $response, $args)
+  {
+    $list = Log::getAll();
+
+    // Creamos archivo en memoria
+    $stream = fopen('php://memory', 'w+');
+    foreach ($list as $line) {
+      fputcsv($stream, get_object_vars($line), ',');
+    }
+    rewind($stream);
+
+    $response->withHeader('Content-Type', 'text/csv');
+    $response = $response->withHeader('Content-Disposition', 'attachment; filename="file.csv"');
+
+    return $response
+      ->withBody(new \Slim\Psr7\Stream($stream));
+  }
+
+
+
+
 }

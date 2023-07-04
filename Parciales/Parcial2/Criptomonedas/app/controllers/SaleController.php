@@ -116,6 +116,35 @@ class SaleController extends Sale implements IApiUsable
       ->withHeader('Content-Type', 'application/json');
   }
 
+
+  // public function TraerTodosPorMes($request, $response, $args)
+  // {
+  //   $parametros = $request->getQueryParams();
+  //   $fecha_inicio = DateTime::createFromFormat('d-m-y', $parametros['fecha_inicio']);
+  //   $fecha_final = DateTime::createFromFormat('d-m-y', $parametros['fecha_final']);
+
+  //   $list = Sale::getAll();
+  //   $listByOrigin = [];
+  //   foreach ($list as $sale) {
+
+  //     $dateTime = DateTimeController::MySQLToDateTime($sale->dateTimeString);
+  //     $saleOrigin = Coin::getCoin($sale->id_coin)->origin;
+  //     if (
+  //       $saleOrigin == $origin
+  //       &&  $dateTime >= $fecha_inicio
+  //       &&  $dateTime <= $fecha_final
+  //     ) {
+  //       array_push($listByOrigin, $sale);
+  //     }
+  //   }
+  //   $payload = json_encode(array('listOfSales' => $listByOrigin));
+
+  //   $response->getBody()->write($payload);
+  //   return $response
+  //     ->withHeader('Content-Type', 'application/json');
+  // }
+
+
   public function TraerClientesPorMoneda($request, $response, $args)
   {
     $name = $args['name'];
