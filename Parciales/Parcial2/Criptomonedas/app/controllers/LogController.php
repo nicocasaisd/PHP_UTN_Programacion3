@@ -22,7 +22,6 @@ class LogController
     $log->createLog();
 
     $payload = json_encode(array("mensaje" => "Log creado con exito"));
-
   }
 
 
@@ -91,7 +90,7 @@ class LogController
       $logOrigin = Coin::getCoin($log->id_coin)->origin;
       if (
         $logOrigin == $origin
-        &&  $dateTime >= $fecha_inicio 
+        &&  $dateTime >= $fecha_inicio
         &&  $dateTime <= $fecha_final
       ) {
         array_push($listByOrigin, $log);
@@ -109,9 +108,17 @@ class LogController
   public function DescargarCsv($request, $response, $args)
   {
     $list = Log::getAll();
+    //Headers
+    $headers = [];
+    foreach (get_object_vars(new Log()) as $key => $value) {
+      array_push($headers, $key);
+    }
+
 
     // Creamos archivo en memoria
     $stream = fopen('php://memory', 'w+');
+    fputcsv($stream, $headers, ',');
+
     foreach ($list as $line) {
       fputcsv($stream, get_object_vars($line), ',');
     }
@@ -123,8 +130,4 @@ class LogController
     return $response
       ->withBody(new \Slim\Psr7\Stream($stream));
   }
-
-
-
-
 }
